@@ -46,13 +46,13 @@ public class ProjectController {
 	}
 
 	@PutMapping("/update/{pId}")
-	ResponseEntity<Project> UpdateProjectById(@PathVariable int pId,@RequestBody Project project) throws ProjectNotFoundException{
+	ResponseEntity<Project> updateProjectById(@PathVariable int pId,@RequestBody Project project) throws ProjectNotFoundException{
 		logger.info("Sending Request to update Project");
 		Project updateProject = projServ.updateProject(pId, project);
 		return new ResponseEntity<>(updateProject,HttpStatus.CREATED);
 	}
 	@GetMapping("/get/{pId}")
-	ResponseEntity<Project> GetProjectById(@PathVariable int pId) throws ProjectNotFoundException{
+	ResponseEntity<Project> getProjectById(@PathVariable int pId) throws ProjectNotFoundException{
 		logger.info("Sending Request to get the Project by Id");
 		Project getProject = projServ.getProjectById(pId);
 		return new ResponseEntity<>(getProject,HttpStatus.OK);
@@ -60,8 +60,8 @@ public class ProjectController {
 	@GetMapping("/getAll")
 	ResponseEntity<List<Project>> getAllPatients() {
 		logger.info("Sending Request to get all the Projects");
-	List<Project> Projects= projServ.getAllProjects();
-	return new ResponseEntity<>(Projects, HttpStatus.OK);
+	List<Project> projects= projServ.getAllProjects();
+	return new ResponseEntity<>(projects, HttpStatus.OK);
 	}
 
 
